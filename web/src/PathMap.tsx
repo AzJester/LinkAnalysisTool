@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
+import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { LocateFixed, MousePointer2 } from "lucide-react";
 import type { Project, Result } from "./types";
+
+// MapLibre 6 requires an explicitly bundled worker when used with Vite.
+maplibregl.setWorkerUrl(workerUrl);
 
 export default function PathMap({
   project,
@@ -24,7 +28,7 @@ export default function PathMap({
   latest.current = { project, place, onPlace };
   const [ready, setReady] = useState(false),
     [mapError, setMapError] = useState("");
-  const fit = () => {
+  const fit = (duration = 0) => {
     const { a, b } = latest.current.project;
     if (
       ![a.latitude, a.longitude, b.latitude, b.longitude].every(Number.isFinite)
@@ -42,7 +46,7 @@ export default function PathMap({
         [Math.min(a.longitude, end), Math.min(a.latitude, b.latitude)],
         [Math.max(a.longitude, end), Math.max(a.latitude, b.latitude)],
       ],
-      { padding: 75, maxZoom: 15, duration: 500 },
+      { padding: 55, maxZoom: 15, duration },
     );
   };
   useEffect(() => {
@@ -149,7 +153,10 @@ export default function PathMap({
             ((((e.lngLat.lng + 180) % 360) + 360) % 360) - 180,
           );
       });
-      const observer = new ResizeObserver(() => instance.resize());
+      const observer = new ResizeObserver(() => {
+        instance.resize();
+        if (instance.loaded()) fit();
+      });
       observer.observe(container.current);
       return () => {
         observer.disconnect();
@@ -237,7 +244,7 @@ export default function PathMap({
             Place B
           </button>
           <button
-            onClick={fit}
+            onClick={() => fit(300)}
             title="Fit path to map"
             aria-label="Fit path to map"
           >
