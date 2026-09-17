@@ -1,0 +1,424 @@
+{
+ "case": "waterfall_valley",
+ "description": "Colbert County, Alabama siting analysis, 17 September 2026. Acceptance fixture for the terrain and coverage engine.",
+ "source": "Waterfall_Valley_Communications_Siting_Analysis_2026-09-17",
+ "inputs": {
+  "dem": "WaterfallValley_DEM_30m_meters.tif",
+  "dem_grid": {
+   "cols": 272,
+   "rows": 363,
+   "cells": 98736,
+   "cell_size_m": 30
+  },
+  "boundary": "parcel.geojson",
+  "key_points": "WaterfallValley_Elevation_KeyPoints.csv",
+  "earth_radius_factor": 1.3333,
+  "receiver_agl_ft": 6.5,
+  "tower_heights_ft": [
+   100,
+   150
+  ],
+  "canopy_model_ft": {
+   "valley_hardwood": 80,
+   "planted_pine": 65,
+   "one_yr_plantation": 3,
+   "harvested": 3
+  },
+  "note": "Canopy heights were assigned by stand type in the source analysis. A measured canopy height model will and should give different over-canopy results."
+ },
+ "geometry": {
+  "area_inside_outer_boundary_acres": {
+   "value": 4392,
+   "tol_pct": 0.5
+  },
+  "net_area_acres": {
+   "value": 4231,
+   "tol_pct": 0.5
+  },
+  "inholding_acres": {
+   "value": 161,
+   "tol_pct": 1.0
+  },
+  "extent_ew_mi": {
+   "value": 4.52,
+   "tol_pct": 0.5
+  },
+  "extent_ns_mi": {
+   "value": 3.92,
+   "tol_pct": 0.5
+  },
+  "perimeter_mi": {
+   "value": 17.1,
+   "tol_pct": 1.0
+  },
+  "centroid": {
+   "lat": 34.6188,
+   "lon": -87.8591,
+   "tol_ft": 50
+  },
+  "cells_inside_net_parcel": {
+   "value": 19430,
+   "tol": 0
+  }
+ },
+ "elevation": {
+  "min_ft": {
+   "value": 485,
+   "lat": 34.62834,
+   "lon": -87.85034,
+   "tol_ft": 1
+  },
+  "max_ft": {
+   "value": 960,
+   "lat": 34.59564,
+   "lon": -87.82447,
+   "tol_ft": 1
+  },
+  "median_ft": {
+   "value": 735,
+   "tol_ft": 2
+  },
+  "mean_ft": {
+   "value": 719,
+   "tol_ft": 2
+  },
+  "p5_ft": {
+   "value": 557,
+   "tol_ft": 2
+  },
+  "p25_ft": {
+   "value": 676,
+   "tol_ft": 2
+  },
+  "p75_ft": {
+   "value": 771,
+   "tol_ft": 2
+  },
+  "p95_ft": {
+   "value": 839,
+   "tol_ft": 2
+  }
+ },
+ "sites": {
+  "S1": {
+   "name": "SE plateau (Wagnon Mountain south, harvested)",
+   "lat": 34.59645,
+   "lon": -87.8284,
+   "elev_ft_3dep": 948.0
+  },
+  "S2": {
+   "name": "Northwest ridge (planted pine)",
+   "lat": 34.63213,
+   "lon": -87.87425,
+   "elev_ft_3dep": 881.0
+  },
+  "S3": {
+   "name": "West plateau (harvested)",
+   "lat": 34.62537,
+   "lon": -87.88113,
+   "elev_ft_3dep": 906.0
+  },
+  "S4": {
+   "name": "Timber Knob east spur (1-yr plantation)",
+   "lat": 34.63375,
+   "lon": -87.8546,
+   "elev_ft_3dep": 863.0
+  },
+  "S5": {
+   "name": "Central ridge / Chickasaw Boundary (harvested)",
+   "lat": 34.60861,
+   "lon": -87.83593,
+   "elev_ft_3dep": 846.0
+  },
+  "S6": {
+   "name": "Timber Knob summit (planted pine)",
+   "lat": 34.64456,
+   "lon": -87.86279,
+   "elev_ft_3dep": 872.0
+  },
+  "S7": {
+   "name": "North-central spur (1-yr plantation)",
+   "lat": 34.63131,
+   "lon": -87.86181,
+   "elev_ft_3dep": 814.0
+  },
+  "S8": {
+   "name": "SE plateau high point 960 ft (planted pine)",
+   "lat": 34.59564,
+   "lon": -87.82447,
+   "elev_ft_3dep": 960.0
+  }
+ },
+ "single_site_coverage_pct": {
+  "_tol_points": 1.0,
+  "_basis": "percent of 4231 acre net parcel, bare-earth terrain LOS, receiver 6.5 ft AGL",
+  "S1": {
+   "ground_100": 49,
+   "ground_150": 51,
+   "air200_100": 88,
+   "air200_150": 89
+  },
+  "S2": {
+   "ground_100": 56,
+   "ground_150": 60,
+   "air200_100": 90,
+   "air200_150": 92
+  },
+  "S3": {
+   "ground_100": 56,
+   "ground_150": 60,
+   "air200_100": 91,
+   "air200_150": 93
+  },
+  "S4": {
+   "ground_100": 54,
+   "ground_150": 60,
+   "air200_100": 91,
+   "air200_150": 94
+  },
+  "S5": {
+   "ground_100": 49,
+   "ground_150": 52,
+   "air200_100": 87,
+   "air200_150": 89
+  },
+  "S6": {
+   "ground_100": 47,
+   "ground_150": 52,
+   "air200_100": 86,
+   "air200_150": 89
+  },
+  "S7": {
+   "ground_100": 51,
+   "ground_150": 57,
+   "air200_100": 88,
+   "air200_150": 91
+  },
+  "S8": {
+   "ground_100": 46,
+   "ground_150": 49,
+   "air200_100": 87,
+   "air200_150": 88
+  }
+ },
+ "network": {
+  "_tol_points": 1.0,
+  "optimal_trio": [
+   "S1",
+   "S3",
+   "S4"
+  ],
+  "equal_scoring_alternate": [
+   "S1",
+   "S2",
+   "S4"
+  ],
+  "coverage_pct": {
+   "whole_parcel": {
+    "towers_100": 76.8,
+    "towers_150": 80.7
+   },
+   "valley_hardwood": {
+    "acres": 1826,
+    "towers_100": 53,
+    "towers_150": 61
+   },
+   "planted_pine": {
+    "acres": 1551,
+    "towers_100": 97,
+    "towers_150": 98
+   },
+   "one_yr_plantation": {
+    "acres": 290,
+    "towers_100": 99,
+    "towers_150": 99
+   },
+   "harvested": {
+    "acres": 554,
+    "towers_100": 90,
+    "towers_150": 92
+   }
+  },
+  "air_200ft_agl_S3_S4_only": {
+   "towers_100": 94.6,
+   "towers_150": 96.9
+  },
+  "with_S9_relay_150ft": {
+   "parcel": 85.7,
+   "valley": 72
+  }
+ },
+ "links": {
+  "_tol": {
+   "clearance_ft": 3,
+   "azimuth_deg": 1,
+   "distance_mi": 0.02
+  },
+  "_note": "Both ends at tower height; 150 ft values with 100 ft in the _100 fields.",
+  "S3-S4": {
+   "dist_mi": 1.62,
+   "dist_km": 2.6,
+   "az_deg": 69,
+   "terrain_150": 155,
+   "terrain_100": 105,
+   "canopy_150": 152,
+   "canopy_100": 102
+  },
+  "S4-S1": {
+   "dist_mi": 2.97,
+   "dist_km": 4.78,
+   "az_deg": 150,
+   "terrain_150": 155,
+   "terrain_100": 105,
+   "canopy_150": 124,
+   "canopy_100": 74
+  },
+  "S3-S1": {
+   "dist_mi": 3.61,
+   "dist_km": 5.8,
+   "az_deg": 124,
+   "terrain_150": 163,
+   "terrain_100": 113,
+   "canopy_150": 160,
+   "canopy_100": 110
+  },
+  "S1-S5": {
+   "dist_mi": 0.94,
+   "dist_km": 1.52,
+   "az_deg": 333,
+   "terrain_150": 162,
+   "terrain_100": 112,
+   "canopy_150": 159,
+   "canopy_100": 109
+  },
+  "S4-S5": {
+   "dist_mi": 2.03,
+   "dist_km": 3.27,
+   "az_deg": 148,
+   "terrain_150": 151,
+   "terrain_100": 100,
+   "canopy_150": 118,
+   "canopy_100": 69
+  },
+  "S3-S2": {
+   "dist_mi": 0.61,
+   "dist_km": 0.98,
+   "az_deg": 40,
+   "terrain_150": 160,
+   "terrain_100": 110,
+   "canopy_150": 95,
+   "canopy_100": 45
+  }
+ },
+ "fresnel_60pct_f1_midpath_ft": {
+  "_tol_ft": 0,
+  "_formula": "F1 = 17.32 * sqrt(d1*d2/(f*D)); d in km, f in GHz, result in meters",
+  "S3-S4": {
+   "mhz_900": 29,
+   "ghz_2_4": 18,
+   "ghz_5_8": 11
+  },
+  "S4-S1": {
+   "mhz_900": 39,
+   "ghz_2_4": 24,
+   "ghz_5_8": 15
+  },
+  "S3-S1": {
+   "mhz_900": 43,
+   "ghz_2_4": 27,
+   "ghz_5_8": 17
+  },
+  "S1-S5": {
+   "mhz_900": 22,
+   "ghz_2_4": 14,
+   "ghz_5_8": 9
+  },
+  "S4-S5": {
+   "mhz_900": 33,
+   "ghz_2_4": 20,
+   "ghz_5_8": 13
+  },
+  "S3-S2": {
+   "mhz_900": 18,
+   "ghz_2_4": 11,
+   "ghz_5_8": 7
+  }
+ },
+ "shadows": {
+  "_note": "S1+S3+S4 at 150 ft. Cluster count and total acreage are the assertions; centroids may move up to 200 ft.",
+  "total_uncovered_acres": {
+   "value": 834,
+   "tol_pct": 2
+  },
+  "cluster_count": {
+   "value": 8,
+   "tol": 0
+  },
+  "clusters": [
+   {
+    "id": "U1",
+    "acres": 123,
+    "lat": 34.62226,
+    "lon": -87.86571,
+    "floor_mean_ft": 590,
+    "floor_min_ft": 517
+   },
+   {
+    "id": "U2",
+    "acres": 91,
+    "lat": 34.61643,
+    "lon": -87.84536,
+    "floor_mean_ft": 560,
+    "floor_min_ft": 497
+   },
+   {
+    "id": "U3",
+    "acres": 77,
+    "lat": 34.63696,
+    "lon": -87.85989,
+    "floor_mean_ft": 654,
+    "floor_min_ft": 506
+   },
+   {
+    "id": "U4",
+    "acres": 77,
+    "lat": 34.6077,
+    "lon": -87.85025,
+    "floor_mean_ft": 576,
+    "floor_min_ft": 515
+   },
+   {
+    "id": "U5",
+    "acres": 70,
+    "lat": 34.64472,
+    "lon": -87.8673,
+    "floor_mean_ft": 671,
+    "floor_min_ft": 527
+   },
+   {
+    "id": "U6",
+    "acres": 57,
+    "lat": 34.62832,
+    "lon": -87.85425,
+    "floor_mean_ft": 583,
+    "floor_min_ft": 485
+   },
+   {
+    "id": "U7",
+    "acres": 42,
+    "lat": 34.61395,
+    "lon": -87.8862,
+    "floor_mean_ft": 638,
+    "floor_min_ft": 574
+   },
+   {
+    "id": "U8",
+    "acres": 40,
+    "lat": 34.61894,
+    "lon": -87.87664,
+    "floor_mean_ft": 599,
+    "floor_min_ft": 554
+   }
+  ]
+ }
+}

@@ -1,0 +1,79 @@
+id,name,category,latitude,longitude,utm16n_easting_m,utm16n_northing_m,elev_m_3DEP,elev_ft_3DEP
+S1,"SE plateau (Wagnon Mountain south, harvested)",Candidate tower site,34.596450,-87.828400,424036.9,3828604.2,288.9,948
+S2,Northwest ridge (planted pine),Candidate tower site,34.632130,-87.874250,419866.7,3832596.4,268.6,881
+S3,West plateau (harvested),Candidate tower site,34.625370,-87.881130,419229.6,3831852.2,276.2,906
+S4,Timber Knob east spur (1-yr plantation),Candidate tower site,34.633750,-87.854600,421669.4,3832760.6,263.0,863
+S5,Central ridge / Chickasaw Boundary (harvested),Candidate tower site,34.608610,-87.835930,423357.6,3829958.4,257.9,846
+S6,Timber Knob summit (planted pine),Candidate tower site,34.644560,-87.862790,420929.0,3833965.7,265.7,872
+S7,North-central spur (1-yr plantation),Candidate tower site,34.631310,-87.861810,421006.2,3832495.6,248.1,814
+S8,SE plateau high point 960 ft (planted pine),Candidate tower site,34.595640,-87.824470,424396.6,3828511.4,292.5,960
+P01,Parcel boundary vertex 1,Parcel boundary vertex,34.617677,-87.899109,417573.9,3831013.7,220.9,725
+P02,Parcel boundary vertex 2,Parcel boundary vertex,34.614183,-87.899227,417559.5,3830626.3,227.8,747
+P03,Parcel boundary vertex 3,Parcel boundary vertex,34.614005,-87.894962,417950.4,3830603.1,255.2,837
+P04,Parcel boundary vertex 4,Parcel boundary vertex,34.610452,-87.894903,417952.3,3830209.0,224.6,737
+P05,Parcel boundary vertex 5,Parcel boundary vertex,34.609918,-87.872570,419999.4,3830131.9,215.4,707
+P06,Parcel boundary vertex 6,Parcel boundary vertex,34.608615,-87.872392,420014.5,3829987.3,204.0,669
+P07,Parcel boundary vertex 7,Parcel boundary vertex,34.602811,-87.872689,419981.7,3829343.8,222.7,730
+P08,Parcel boundary vertex 8,Parcel boundary vertex,34.602693,-87.846505,422382.5,3829310.2,224.4,736
+P09,Parcel boundary vertex 9,Parcel boundary vertex,34.609504,-87.846150,422421.4,3830065.3,219.2,719
+P10,Parcel boundary vertex 10,Parcel boundary vertex,34.609682,-87.844847,422541.0,3830084.0,219.8,721
+P11,Parcel boundary vertex 11,Parcel boundary vertex,34.609445,-87.841056,422888.4,3830054.8,219.5,720
+P12,Parcel boundary vertex 12,Parcel boundary vertex,34.602574,-87.840878,422898.4,3829292.8,191.3,628
+P13,Parcel boundary vertex 13,Parcel boundary vertex,34.602396,-87.837620,423197.0,3829270.6,176.8,580
+P14,Parcel boundary vertex 14,Parcel boundary vertex,34.599909,-87.837501,423205.5,3828994.7,210.4,690
+P15,Parcel boundary vertex 15,Parcel boundary vertex,34.599790,-87.835724,423368.4,3828980.2,176.2,578
+P16,Parcel boundary vertex 16,Parcel boundary vertex,34.598724,-87.835546,423383.7,3828861.8,176.8,580
+P17,Parcel boundary vertex 17,Parcel boundary vertex,34.598665,-87.833532,423568.3,3828853.7,198.8,652
+P18,Parcel boundary vertex 18,Parcel boundary vertex,34.598369,-87.833177,423600.6,3828820.6,210.5,691
+P19,Parcel boundary vertex 19,Parcel boundary vertex,34.589366,-87.833414,423570.7,3827822.4,238.4,782
+P20,Parcel boundary vertex 20,Parcel boundary vertex,34.589307,-87.829089,423967.2,3827812.6,231.3,759
+P21,Parcel boundary vertex 21,Parcel boundary vertex,34.594815,-87.828853,423994.0,3828423.2,260.7,855
+P22,Parcel boundary vertex 22,Parcel boundary vertex,34.594756,-87.819967,424808.7,3828410.0,272.4,894
+P23,Parcel boundary vertex 23,Parcel boundary vertex,34.597717,-87.819908,424816.8,3828738.4,289.3,949
+P24,Parcel boundary vertex 24,Parcel boundary vertex,34.599553,-87.821152,424704.4,3828942.9,273.5,897
+P25,Parcel boundary vertex 25,Parcel boundary vertex,34.600679,-87.821389,424683.7,3829067.9,266.6,875
+P26,Parcel boundary vertex 26,Parcel boundary vertex,34.604410,-87.825239,424334.0,3829484.6,246.5,809
+P27,Parcel boundary vertex 27,Parcel boundary vertex,34.607194,-87.826068,424260.5,3829793.9,212.5,697
+P28,Parcel boundary vertex 28,Parcel boundary vertex,34.608912,-87.828438,424044.8,3829986.1,206.0,676
+P29,Parcel boundary vertex 29,Parcel boundary vertex,34.609682,-87.830570,423850.0,3830073.1,201.6,661
+P30,Parcel boundary vertex 30,Parcel boundary vertex,34.610748,-87.831518,423764.1,3830192.1,196.5,645
+P31,Parcel boundary vertex 31,Parcel boundary vertex,34.610985,-87.832348,423688.2,3830219.0,194.8,639
+P32,Parcel boundary vertex 32,Parcel boundary vertex,34.611399,-87.832703,423656.0,3830265.2,197.8,649
+P33,Parcel boundary vertex 33,Parcel boundary vertex,34.616374,-87.832585,423671.4,3830816.9,235.6,773
+P34,Parcel boundary vertex 34,Parcel boundary vertex,34.616552,-87.836553,423307.7,3830839.6,215.7,708
+P35,Parcel boundary vertex 35,Parcel boundary vertex,34.620165,-87.836790,423289.3,3831240.4,243.2,798
+P36,Parcel boundary vertex 36,Parcel boundary vertex,34.620520,-87.846446,422404.5,3831287.2,160.8,528
+P37,Parcel boundary vertex 37,Parcel boundary vertex,34.627746,-87.846387,422416.6,3832088.5,167.0,548
+P38,Parcel boundary vertex 38,Parcel boundary vertex,34.627806,-87.850178,422069.2,3832098.0,160.5,526
+P39,Parcel boundary vertex 39,Parcel boundary vertex,34.631241,-87.850356,422056.1,3832479.0,177.3,582
+P40,Parcel boundary vertex 40,Parcel boundary vertex,34.631359,-87.853140,421801.0,3832494.3,246.9,810
+P41,Parcel boundary vertex 41,Parcel boundary vertex,34.631656,-87.853495,421768.7,3832527.5,250.4,822
+P42,Parcel boundary vertex 42,Parcel boundary vertex,34.645930,-87.853851,421749.5,3834110.7,251.4,825
+P43,Parcel boundary vertex 43,Parcel boundary vertex,34.646107,-87.871208,420159.0,3834144.0,170.0,558
+P44,Parcel boundary vertex 44,Parcel boundary vertex,34.639118,-87.871208,420152.3,3833368.9,235.5,773
+P45,Parcel boundary vertex 45,Parcel boundary vertex,34.638941,-87.881278,419229.1,3833357.2,220.3,723
+P46,Parcel boundary vertex 46,Parcel boundary vertex,34.617559,-87.881693,419170.4,3830986.5,176.8,580
+P47,Parcel boundary vertex 47,Parcel boundary vertex,34.617381,-87.882463,419099.6,3830967.4,189.7,622
+I1,Inholding corner 1,Excluded inholding corner,34.616789,-87.872511,420011.4,3830893.8,226.4,743
+I2,Inholding corner 2,Excluded inholding corner,34.616789,-87.863566,420831.5,3830886.7,178.7,586
+I3,Inholding corner 3,Excluded inholding corner,34.609622,-87.863566,420824.7,3830092.0,221.8,728
+I4,Inholding corner 4,Excluded inholding corner,34.609622,-87.872511,420004.6,3830099.0,211.5,694
+G1,"Timber Knob Mountain (GNIS summit, 863 ft)",GNIS named feature,34.645370,-87.860312,421156.8,3834053.6,262.8,862
+G2,"Wagnon Mountain (GNIS summit, 853 ft)",GNIS named feature,34.631759,-87.832534,423690.2,3832522.8,260.6,855
+G3,Waterfall Branch (GNIS point),GNIS named feature,34.631759,-87.848090,422264.3,3832534.7,145.7,478
+G4,Lick Creek (GNIS point),GNIS named feature,34.664536,-87.842812,422778.5,3836165.5,136.2,447
+H1,Highest point in parcel (SE plateau),Terrain extreme,34.595640,-87.824470,424396.6,3828511.4,292.5,960
+L1,"Lowest point in parcel (Waterfall Branch outlet, NE notch)",Terrain extreme,34.628340,-87.850340,422054.8,3832157.3,147.8,485
+U1,Shadowed hollow 1: Long Hollow / upper Waterfall Branch bottom,"Terrain-shadowed area (3-site network, 150 ft)",34.622260,-87.865710,420640.1,3831495.1,168.8,554
+U2,Shadowed hollow 2: Waterfall Branch bottom east of Chickasaw Boundary,"Terrain-shadowed area (3-site network, 150 ft)",34.616430,-87.845360,422500.3,3830832.8,154.2,506
+U3,Shadowed hollow 3: Hollow south of Timber Knob (Waterfall Branch headwater),"Terrain-shadowed area (3-site network, 150 ft)",34.636960,-87.859890,421187.6,3833120.7,188.4,618
+U4,Shadowed hollow 4: Jimmie Branch bottom,"Terrain-shadowed area (3-site network, 150 ft)",34.607700,-87.850250,422043.8,3829868.4,171.7,563
+U5,Shadowed hollow 5: Hollow north side of Timber Knob ridge,"Terrain-shadowed area (3-site network, 150 ft)",34.644720,-87.867300,420515.8,3833987.0,192.2,631
+U6,Shadowed hollow 6: Waterfall Branch gorge at NE outlet,"Terrain-shadowed area (3-site network, 150 ft)",34.628320,-87.854250,421696.4,3832158.1,175.4,575
+U7,Shadowed hollow 7: West block hollow,"Terrain-shadowed area (3-site network, 150 ft)",34.613950,-87.886200,418753.7,3830589.9,221.0,725
+U8,Shadowed hollow 8: Long Hollow west,"Terrain-shadowed area (3-site network, 150 ft)",34.618940,-87.876640,419635.0,3831135.6,178.0,584
+V1,Best 4th (valley) site: central knoll between Waterfall Br. and Jimmie Br.,Candidate relay site,34.619150,-87.857220,421415.5,3831143.6,233.6,766
+F1,Map frame NW corner (Figs A-3 to A-7),Map frame corner,34.666720,-87.904380,417139.4,3836456.6,245.1,804
+F2,Map frame SE corner (Figs A-3 to A-7),Map frame corner,34.568700,-87.815290,425214.3,3825517.1,281.2,923
+S9,Central spur relay option A (planted pine),Candidate relay site,34.622940,-87.853290,421779.4,3831560.8,238.2,781
+S9b,"Central spur relay option B (1-yr plantation, open)",Candidate relay site,34.622940,-87.861150,421058.8,3831566.9,224.9,738
