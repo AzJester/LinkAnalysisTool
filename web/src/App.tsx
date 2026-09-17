@@ -214,11 +214,9 @@ function readSaved(): SavedProject[] {
   }
 }
 async function jsonResponse(response: Response) {
-  const body = await response
-    .json()
-    .catch(() => ({
-      detail: "The server is starting or unavailable. Please retry shortly.",
-    }));
+  const body = await response.json().catch(() => ({
+    detail: "The server is starting or unavailable. Please retry shortly.",
+  }));
   if (!response.ok)
     throw new Error(
       Array.isArray(body.detail)
@@ -579,7 +577,7 @@ export default function App() {
               onChange={(e) => patch({ name: e.target.value })}
             />
             <span className="chip">
-              {savedId ? "Saved project" : "Example project"}
+              {savedId ? "Saved project" : "Unsaved project"}
             </span>
           </div>
           <div className="project-actions">
@@ -647,7 +645,18 @@ export default function App() {
                     disabled={!result || stale}
                     onClick={() => {
                       setExportOpen(false);
-                      window.print();
+                      const method =
+                        document.querySelector<HTMLDetailsElement>(".method");
+                      const wasOpen = method?.open;
+                      if (method) method.open = true;
+                      window.addEventListener(
+                        "afterprint",
+                        () => {
+                          if (method) method.open = !!wasOpen;
+                        },
+                        { once: true },
+                      );
+                      requestAnimationFrame(() => window.print());
                     }}
                   >
                     <Printer size={15} />
