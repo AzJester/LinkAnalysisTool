@@ -2,8 +2,9 @@
 
 These need no engine code. They verify that the fixture's own numbers are
 arithmetically sound, so a failure here means the fixture was edited wrongly,
-not that the engine regressed. Engine acceptance tests live in
-test_waterfall_valley.py and are skipped until the terrain engine exists.
+not that the engine regressed. These do not reconstruct area coverage.
+Current engine tests live in test_engine.py; see docs/VALIDATION.md for
+unresolved historical conventions and independent audit results.
 """
 
 import json
