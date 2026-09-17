@@ -1,0 +1,222 @@
+{
+  "fixture_hashes": {
+    "expected_results.json": "bc900f66b2bfb6fd868c7b5b669245863c99b69846029f00e453450192771a94",
+    "parcel.geojson": "9591485e382df23006a915b059c12b4cd4429d5f15b6f4a015c2fd76de77962a",
+    "README.md": "afb2026feb0ebeeac94046a4b5c0d82299fcdb0c1c20151ac765d7fa4eff5690",
+    "WaterfallValley_DEM_30m_meters.tif": "c0389c8ca8aa539b24c60633df36e6c606e949e427b3a7158080b85723c64e8b",
+    "WaterfallValley_Elevation_KeyPoints.csv": "64a25c9e92a5aa51ddabfede87061a583cf53a3c1a6e438509668e6ec17b7b85"
+  },
+  "geometry": {
+    "parcel": {
+      "valid": true,
+      "geodesic_area_acres": 4391.840133268862,
+      "utm_area_acres": 4388.998520535212,
+      "geodesic_perimeter_mi": 17.109829182546715,
+      "centroid_lon_lat": [
+        -87.8591361626284,
+        34.61878370186206
+      ]
+    },
+    "inholding": {
+      "valid": true,
+      "geodesic_area_acres": 161.17815863499936,
+      "utm_area_acres": 161.07439603122353,
+      "geodesic_perimeter_mi": 2.007596907179381,
+      "centroid_lon_lat": [
+        -87.8680385013091,
+        34.613205531696956
+      ]
+    },
+    "net": {
+      "valid": true,
+      "geodesic_area_acres": 4230.661974633862,
+      "utm_area_acres": 4227.924124503986,
+      "geodesic_perimeter_mi": 17.109829182546715,
+      "centroid_lon_lat": [
+        -87.85879697987856,
+        34.618996204996385
+      ]
+    },
+    "inholding_within_outer": true
+  },
+  "dem": {
+    "width": 272,
+    "height": 363,
+    "crs": "EPSG:4326",
+    "transform": [
+      0.0003275,
+      0.0,
+      -87.90454375,
+      0.0,
+      -0.00027027,
+      34.666855135,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "bounds": [
+      -87.90454375,
+      34.568747125,
+      -87.81546375,
+      34.666855135
+    ],
+    "nodata": null,
+    "tags": {
+      "source": "USGS 3DEP bare-earth DEM via elevation.nationalmap.gov getSamples, sampled 30 m, Sep 17 2026",
+      "units": "m",
+      "vertical_datum": "NAVD88",
+      "AREA_OR_POINT": "Area"
+    },
+    "center_cell_width_m": 30.035222408133567,
+    "center_cell_height_m": 29.982023012085428,
+    "net_mask_center_cells": 19004,
+    "net_mask_all_touched_cells": 19562,
+    "valid_net_cells": 19004,
+    "expected_net_cells": 19430,
+    "elevation_ft": {
+      "min": 484.90814208984375,
+      "max": 959.6456298828125,
+      "mean": 719.6056518554688,
+      "percentiles_5_25_50_75_95": [
+        557.4146781380721,
+        677.165334306051,
+        735.2362404970985,
+        770.997375328084,
+        838.254593175853
+      ]
+    },
+    "sites": {
+      "S1": {
+        "dem_nearest_elevation_ft": 947.8346256446338,
+        "fixture_point_elevation_ft": 948.0,
+        "difference_ft": -0.16537435536622525
+      },
+      "S2": {
+        "dem_nearest_elevation_ft": 881.2336158251825,
+        "fixture_point_elevation_ft": 881.0,
+        "difference_ft": 0.2336158251824827
+      },
+      "S3": {
+        "dem_nearest_elevation_ft": 906.1680190519397,
+        "fixture_point_elevation_ft": 906.0,
+        "difference_ft": 0.16801905193972289
+      },
+      "S4": {
+        "dem_nearest_elevation_ft": 862.8608923884514,
+        "fixture_point_elevation_ft": 863.0,
+        "difference_ft": -0.1391076115486385
+      },
+      "S5": {
+        "dem_nearest_elevation_ft": 846.1285888992269,
+        "fixture_point_elevation_ft": 846.0,
+        "difference_ft": 0.12858889922688377
+      },
+      "S6": {
+        "dem_nearest_elevation_ft": 871.7192001543019,
+        "fixture_point_elevation_ft": 872.0,
+        "difference_ft": -0.280799845698084
+      },
+      "S7": {
+        "dem_nearest_elevation_ft": 813.9763979774134,
+        "fixture_point_elevation_ft": 814.0,
+        "difference_ft": -0.02360202258660138
+      },
+      "S8": {
+        "dem_nearest_elevation_ft": 959.6456692913385,
+        "fixture_point_elevation_ft": 960.0,
+        "difference_ft": -0.35433070866145044
+      }
+    }
+  },
+  "arithmetic": {
+    "class_acres_sum": 4221,
+    "fixture_net_acres": 4231,
+    "expected_uncovered_acres_from_coverage": 816.5829999999997,
+    "fixture_uncovered_acres": 834,
+    "listed_shadow_cluster_acres_sum": 577,
+    "site_count": 8,
+    "link_count": 6,
+    "S9_defined": false
+  },
+  "key_points_csv": {
+    "row_count": 78,
+    "headers": [
+      "id",
+      "name",
+      "category",
+      "latitude",
+      "longitude",
+      "utm16n_easting_m",
+      "utm16n_northing_m",
+      "elev_m_3DEP",
+      "elev_ft_3DEP"
+    ],
+    "sample": [
+      {
+        "id": "S1",
+        "name": "SE plateau (Wagnon Mountain south, harvested)",
+        "category": "Candidate tower site",
+        "latitude": "34.596450",
+        "longitude": "-87.828400",
+        "utm16n_easting_m": "424036.9",
+        "utm16n_northing_m": "3828604.2",
+        "elev_m_3DEP": "288.9",
+        "elev_ft_3DEP": "948"
+      },
+      {
+        "id": "S2",
+        "name": "Northwest ridge (planted pine)",
+        "category": "Candidate tower site",
+        "latitude": "34.632130",
+        "longitude": "-87.874250",
+        "utm16n_easting_m": "419866.7",
+        "utm16n_northing_m": "3832596.4",
+        "elev_m_3DEP": "268.6",
+        "elev_ft_3DEP": "881"
+      },
+      {
+        "id": "S3",
+        "name": "West plateau (harvested)",
+        "category": "Candidate tower site",
+        "latitude": "34.625370",
+        "longitude": "-87.881130",
+        "utm16n_easting_m": "419229.6",
+        "utm16n_northing_m": "3831852.2",
+        "elev_m_3DEP": "276.2",
+        "elev_ft_3DEP": "906"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "area_inside_outer_boundary_acres",
+      "actual": 4391.840133268862,
+      "expected": 4392,
+      "error_pct": 0.0036399528947628212,
+      "tolerance_pct": 0.5,
+      "pass": true
+    },
+    {
+      "check": "net_area_acres",
+      "actual": 4230.661974633862,
+      "expected": 4231,
+      "error_pct": 0.007989254694829029,
+      "tolerance_pct": 0.5,
+      "pass": true
+    },
+    {
+      "check": "inholding_acres",
+      "actual": 161.17815863499936,
+      "expected": 161,
+      "error_pct": 0.11065753726668959,
+      "tolerance_pct": 1.0,
+      "pass": true
+    },
+    {
+      "check": "native_grid_net_center_cell_count",
+      "actual": 19004,
+      "expected": 19430,
+      "pass": false
+    }
+  ]
+}

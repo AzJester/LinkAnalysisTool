@@ -1,63 +1,62 @@
-# LinkAnalysisTool
+# Link Budget
 
-A map-driven web application for microwave, RF, and Wi-Fi link analysis anywhere in the United States.
+A public, independently hosted radio link budget workbench for **[linkbudget.st-dba.com](https://linkbudget.st-dba.com)**. It runs from this GitHub repository on Render, with no ChatGPT account or hosting dependency.
 
-Give it a point, a path, or a polygon. It returns terrain and canopy line of sight, ranked candidate tower sites, backbone link budgets, signal-strength coverage, regulatory screening, and a finished report package.
+## Implemented in 1.0
 
-## Status
+- Place two sites on a map, drag markers, or enter WGS84 coordinates.
+- Configure both radios independently: power, antenna gain, feeder losses, sensitivity and noise figure.
+- Calculate ellipsoidal distance, true bearings, free-space loss, both directional received powers, margins and thermal-noise baselines.
+- Retrieve live USGS 3DEP terrain, recording actual product names, acquisition dates, datum and resolution metadata.
+- Plot effective-Earth terrain, the antenna ray, first Fresnel zone and selected clearance boundary. Add known obstacles and a uniform clutter envelope.
+- Identify blocked paths and the controlling clearance point, including the equal antenna-height increase needed to reach the sampled clearance boundary.
+- Save up to 20 projects in the browser. Import/export versioned project JSON, full calculation JSON, budget/profile CSV and a printable report for PDF.
+- Use metric or imperial display units, keyboard inputs and a responsive mobile layout.
 
-Planning. No code yet. The build plan is in [`docs/BUILD_PLAN.md`](docs/BUILD_PLAN.md).
+The budget is a **free-space reference calculation**, with explicit user-entered additional losses. It does not automatically model diffraction, foliage attenuation, rain/gas losses, interference, annual availability, area coverage, network optimization, Wi-Fi throughput or regulatory approval. These remain validation-gated stages in the [build plan](docs/BUILD_PLAN.md). Favorable margin on a blocked path is never presented as a successful link.
 
-## What it does
+The example's radio settings are illustrative. Replace receiver sensitivity with the equipment's documented threshold at the selected bandwidth, modulation and required error performance.
 
-| Run type | Input | Answers | Output |
-| --- | --- | --- | --- |
-| Point-to-point link | Two endpoints, heights, band, radio | Will this link close, at what availability? | Path profile, Fresnel clearance, link budget, fade margin |
-| Point-to-area coverage | One site, height, band, ERP | Where can this site be heard? | Signal raster, LOS raster, coverage by land class |
-| Multi-site network | AOI plus candidate sites | Which sites cover the most ground? | Site ranking, combined coverage, shadow inventory, backbone topology |
-| Site discovery | AOI only | Where should towers go? | Candidates generated from terrain maxima, screened and ranked |
-| Wi-Fi / campus | Building footprint or site plan | How many APs, what channels, what throughput? | AP placement, channel plan, throughput map, AFC constraints |
+## Run locally
 
-Every run carries a regulatory overlay: FAA Part 77 triggers, nearby licensed FCC paths, band eligibility, RF exposure boundaries, and the state and local processes that apply at that coordinate.
+Requires Python 3.12 and Node.js 22.12 or newer.
 
-## Why it exists
+```sh
+python -m venv .venv
+# Activate .venv for your shell, then:
+python -m pip install -r requirements-lock.txt -r requirements-dev.txt
+npm --prefix web ci
+npm --prefix web run build
+python -m uvicorn linkanalysis.api:app --host 127.0.0.1 --port 8000
+```
 
-It generalizes a hand-built siting analysis of a 4,231 acre parcel in Colbert County, Alabama, which established the method: georeferenced boundary, 3DEP lidar elevation, viewsheds at multiple tower heights against four receiver definitions, exhaustive site combination search, Fresnel clearance on every backbone link, and a delivered package of report, KMZ, GeoTIFF, CSV, and workbook.
+Open `http://127.0.0.1:8000`. For frontend development, run `npm --prefix web run dev` in a second terminal; Vite proxies `/api` to port 8000.
 
-That analysis took manual georeferencing, hand-assigned canopy heights, and one-off scripts. This tool does it from a map click, anywhere in the country.
+```sh
+python -m pytest
+ruff check linkanalysis tests/test_engine.py tests/test_api.py tests/test_terrain.py tests/conftest.py
+npm --prefix web test
+npm --prefix web run build
+```
 
-That analysis is also the acceptance test. See [`docs/VALIDATION.md`](docs/VALIDATION.md).
+`docker compose up --build` runs the production container on localhost. See [deployment and recovery](docs/DEPLOYMENT.md). CI checks the engine, API, data adapter, imports, frontend build and actual Docker image.
 
-## Approach
+## Limits and privacy
 
-Every data source is free and national, with one optional paid exception (parcels). Propagation uses the reference implementations that regulators use, not hand-rolled models:
+Paths: 10 m to 200 km. Frequency: 0.03 to 100 GHz for the free-space reference. USGS sampling: nominal 10 m spacing, capped at 2,001 samples. Longer paths have larger gaps. Native DEM resolution may be coarser than the sampling interval.
 
-- **Terrain** from [USGS 3DEP](https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer), 1 m lidar where flown
-- **Canopy** from [NAIP-CHM](https://zenodo.org/records/17664995) at 0.6 m across CONUS
-- **Propagation** from [Py1812](https://github.com/eeveetza/Py1812), [NTIA/ITS ITM](https://its.ntia.gov/software/its-open-source-software), and [ITU-Rpy](https://github.com/inigodelportillo/ITU-Rpy)
-- **Regulatory** from FCC ULS bulk data, the FAA Digital Obstacle File, and AFC/SAS provider APIs
+Anonymous runs: 6 requests/minute per client IP, 30/minute globally, 2 active workers and 16 admitted jobs. Inputs: 512 KB, 30 obstacles and 2,001 imported samples. Live terrain has a 90-second deadline; queue wait is capped at 120 seconds.
 
-## Build phases
+Saved projects live in browser storage. Export JSON for a durable backup. Server results use separate random job IDs and bearer capabilities, are never publicly listed, and expire after 15 minutes or earlier under bounded retention. Terrain cache entries last up to four hours, capped at 32 entries. A restart clears jobs/cache; browser projects survive and can be recalculated. No database, user tracking or paid terrain API is required.
 
-| Phase | Delivers | Effort |
-| --- | --- | --- |
-| 0 | Terrain core: fetch, cache, profiles, viewshed, Fresnel | 2 to 3 weeks |
-| 1 | Minimum web app: draw AOI, place sites, see coverage | 3 to 4 weeks |
-| 2 | Propagation: real RF answers, not just geometry | 3 to 4 weeks |
-| 3 | Export package: report, KMZ, GeoTIFF, workbook | 2 to 3 weeks |
-| 4 | Regulatory screening | 3 to 4 weeks |
-| 5 | Wi-Fi layer and refinement | 3 to 4 weeks |
+Calculations send inputs to this service and live terrain coordinates to USGS. The browser requests OpenStreetMap tiles under its [tile policy](https://operations.osmfoundation.org/policies/tiles/). Map availability is best effort; coordinate entry remains usable if tiles fail. Do not submit sensitive site data to an anonymous public service.
 
-Phase 0 is done when the engine reproduces the Colbert County numbers from coordinates alone.
+## Engineering record
 
-## Planned stack
+- [Current build plan](docs/BUILD_PLAN.md)
+- [Original-plan review](docs/PLAN_REVIEW.md)
+- [Validation and historical fixture reconciliation](docs/VALIDATION.md)
+- [Architecture decision](docs/ARCHITECTURE.md)
+- [Deployment and recovery](docs/DEPLOYMENT.md)
 
-Python 3.12, FastAPI, PostGIS, Redis/RQ, rasterio, geopandas, numpy/numba, React with MapLibre GL JS. Docker Compose from day one, because GDAL dependency management is not a thing to fight by hand.
-
-## Scope discipline
-
-This is a link analysis and siting tool. It is not a GIS platform. Any feature that does not answer "will this link work" or "where should this go" is a candidate for deletion.
-
-## Disclaimer
-
-The tool screens. It does not coordinate frequencies and it does not give legal advice on siting. Prior coordination with a certified frequency coordinator and an FAA determination are still required. Coverage predictions carry a 6 to 14 dB model standard deviation: the edge of a coverage polygon is an estimate, not a line on the ground.
+Original planning and validation narratives are preserved in `docs/ORIGINAL_BUILD_PLAN.md` and `docs/HISTORICAL_VALIDATION.md`. Historical expectations were not changed to force acceptance. The original 80.7% coverage and 155 ft clearance claims are not validated by the original 12 fixture consistency tests.

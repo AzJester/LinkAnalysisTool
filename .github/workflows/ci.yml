@@ -1,0 +1,37 @@
+name: Validate application
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: pip install -r requirements-lock.txt -r requirements-dev.txt
+      - run: python -m pytest
+      - run: ruff check linkanalysis tests/test_engine.py tests/test_api.py tests/test_terrain.py tests/conftest.py
+      - run: npm ci && npm test && npm run build
+        working-directory: web
+      - run: docker build -t linkbudget:test .
+      - name: Container smoke test
+        run: |
+          docker run -d --name linkbudget -p 8000:8000 linkbudget:test
+          for attempt in $(seq 1 30); do
+            if curl --fail http://127.0.0.1:8000/api/health && curl --fail http://127.0.0.1:8000/; then exit 0; fi
+            sleep 2
+          done
+          docker logs linkbudget
+          exit 1

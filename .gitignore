@@ -38,6 +38,7 @@ out/
 node_modules/
 dist/
 .vite/
+*.tsbuildinfo
 
 # Editors and OS
 .vscode/

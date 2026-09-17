@@ -1,70 +1,18 @@
 # Working in this repository
 
-Guidance for Claude Code and any other agent working on LinkAnalysisTool.
+Guidance for any coding agent. Read `docs/BUILD_PLAN.md`, `docs/ARCHITECTURE.md` and `docs/VALIDATION.md` before changing calculations or architecture.
 
-## What this is
+- Public deployment belongs to the user's st-dba.com domain. No ChatGPT hosting or account is required.
+- Store physical quantities in named SI units; distinguish logarithmic dB, dBm and dBi. Imperial conversion belongs at display boundaries.
+- Use GeographicLib for WGS84 paths/bearings; use a suitable projection or geodesic area for future area accounting.
+- Read vertical datum from metadata. Do not assume every 3DEP product is NAVD88. Never mix incompatible or unknown references for clearance.
+- The initial engine implements standard Friis free-space loss and effective-Earth/Fresnel geometry. It is not P.1812, ITM or P.530. Future statistical propagation adapters must use versioned, validated implementations within their validity limits.
+- Name each loss and count it once. Clutter height is a geometric envelope, not attenuation. Positive free-space margin cannot make a blocked path a working-link prediction.
+- Query the terrain index before new live sampling. Batch getSamples, never loop identify. Bound traffic, retry transient failures and record actual products. Missing data stays unavailable.
+- Do not call margin annual availability or geometry area coverage. Regulatory approval is not provided. Do not invent confidence intervals.
+- Preserve historical fixtures. The 80.7% coverage, 155 ft clearance and exact 19,430-cell claims remain unresolved; they cannot be build gates without the missing inputs and conventions.
+- Run pytest, focused Ruff, frontend tests and a production build for affected changes. CI builds and smoke-tests Docker.
+- Enforce anonymous input, queue, runtime and retention limits. Never place job capabilities in URLs, logs or public listings.
+- Keep one Uvicorn process for the in-memory job store. Introduce durable queues and isolated processes before native propagation, heavy area analysis or horizontal scaling.
 
-A US-wide microwave, RF, and Wi-Fi link analysis and siting tool. Read [`docs/BUILD_PLAN.md`](docs/BUILD_PLAN.md) before making architectural decisions. Read [`docs/VALIDATION.md`](docs/VALIDATION.md) before touching the terrain or coverage engine.
-
-## Non-negotiables
-
-**Units.** Store SI internally: meters, kilometers, hertz, watts, degrees. Convert only at the display and report boundary. Every function that takes a distance or a frequency names its unit in the parameter name (`distance_km`, `freq_ghz`, `height_m`). Mixing feet into the engine is how this produces a confidently wrong answer.
-
-**Geodesy.** Use `geographiclib` for distance and azimuth on the WGS84 ellipsoid. Do not use spherical great-circle approximations. Work in a local projected CRS (UTM zone selected from the AOI centroid, or local azimuthal equidistant) for anything involving area or raster cell geometry, never in EPSG:4326 or Web Mercator.
-
-**Vertical datums.** 3DEP is NAVD88 orthometric. GPS reports ellipsoidal height. Apply the appropriate NGS geoid model before mixing them. Never assume they are interchangeable.
-
-**Do not write propagation models from scratch.** Use the reference implementations named in the build plan. They are the code regulators use and they have published validation datasets. A hand-rolled path loss model is a liability.
-
-**Do not claim area coverage above 6 GHz.** P.1812 stops at 6 GHz, ITM at 20 GHz. Above that, produce deterministic LOS geometry and a P.530 link design, and say so in the output.
-
-## Validation is a contract
-
-The Colbert County acceptance case in `docs/VALIDATION.md` is the regression fixture. Its expected values are in `tests/fixtures/waterfall_valley/`. Any change to terrain sampling, viewshed, or coverage accounting runs against it. Drift from 80.7 % network coverage or 155 ft minimum clearance on the S3-S4 link fails the build. Do not adjust the expected values to make a test pass without a written reason in the commit message.
-
-## Data source rules
-
-- Query the 3DEP elevation index before sampling, cache the answer with the project, and record which product was used. Never silently mix 1 m and 10 m data across one AOI.
-- Use `getSamples` for path profiles, `exportImage` for area grids. Never loop `identify`.
-- Request rasters in the analysis projection via `imageSR`, not Web Mercator.
-- Throttle external requests, back off on 429 and 503, cache aggressively. These are free government services and should be treated as a shared resource.
-- Every export records source versions and dates: 3DEP product and vintage, canopy model version, land cover year, ULS refresh date, FAA DOF cycle.
-
-## Output honesty
-
-The tool must never present a prediction as more certain than it is:
-
-- Coverage polygons carry a confidence level, not a hard edge. The propagation model standard deviation is 6 to 14 dB.
-- Geometric line of sight is labeled as geometric line of sight, not as coverage.
-- Screening is labeled as screening. Frequency coordination and FAA determinations still require the actual processes.
-- Every report prints its error budget.
-
-## Code layout
-
-```
-linkanalysis/
-  core/        geodesy, projections, units
-  data/        source fetchers and the cache
-  terrain/     sampling, profiles, viewshed, HAAT
-  propagation/ model wrappers, link budgets, interference
-  wifi/        802.11 layer
-  regulatory/  ULS, FAA, AFC, exposure, jurisdiction
-  optimize/    candidate generation, set cover
-  report/      templates and export builders
-api/           FastAPI app
-web/           React front end
-tests/         unit tests and fixtures
-docs/          plan and reference notes
-```
-
-Keep `propagation/` wrappers isolated. The ITU reference implementations carry ITU terms rather than OSI licenses, and that boundary should stay clean.
-
-## Practical notes
-
-- Workers run as separate processes. Propagation libraries are C/C++ underneath and will segfault on degenerate input; one bad path profile should fail a job, not the service.
-- Viewshed is the hot path. Profile before optimizing, then use numba on the inner loop.
-- Build the engine before the UI. A library with a CLI driver is testable in a way a map interface is not.
-
-## Scope
-
-This does link analysis and siting. It is not a GIS platform. Push back on features that do not answer "will this link work" or "where should this go".
+Current code: `linkanalysis/models.py` input contract, `engine.py` physics, `terrain.py` USGS adapter, `api.py` bounded jobs; `web/src/` React, MapLibre and Recharts; `tests/` offline scientific/service checks. Docker and `render.yaml` define deployment.
