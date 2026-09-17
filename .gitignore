@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environment
+.env
+.env.local
+
+# Geospatial cache and large data
+cache/
+data/raw/
+data/cache/
+*.tif
+*.tiff
+*.img
+*.las
+*.laz
+*.gpkg
+*.mbtiles
+!tests/fixtures/**/*.tif
+
+# Bulk regulatory downloads
+data/uls/
+data/dof/
+
+# Outputs
+exports/
+out/
+*.kmz
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
